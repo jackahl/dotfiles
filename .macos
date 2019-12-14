@@ -16,21 +16,52 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Timo                                                                        #
 ###############################################################################
 
-echo "create .zshrc"
-touch .zshrc
+echo "install oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "cloning dotfiles"
+git clone git@github.com:tisto/dotfiles.git "${HOME}/workspace/dotfiles"
+ln -s "${HOME}/workspace/dotfiles/.zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/workspace/dotfiles/.buildout" "${HOME}/.buildout"
 
 echo "installing homebrew"
 # install homebrew https://brew.sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "brew installing stuff"
 # hub: a github-speciic version of git
 # python3: 
-brew install git hub python3
+brew install git hub python3 
+# libpcre: required by Plone/Volto (pyscss dep)
+brew install libpcre
+# libmagic: required by kitconcept.contentcreator (python_magic)
+brew install libmagic
+
+# ansible			enchant			gnutls			libmagic		mercurial		packer			ssh-copy-id
+# aspell			findutils		goaccess		libmatroska		mkvtoolnix		pcre			thefuck
+# bash			flac			gobject-introspection	libogg			moreutils		pcre2			tokyo-cabinet
+# bash-completion2	fontconfig		icu4c			libpng			mysql@5.7		pixman			watch
+# bash-completion@2	freetype		jpeg			libsass			nettle			pkg-config		watchman
+# boost			gdbm			libdvdcss		libtasn1		nmap			poppler			webp
+# cairo			geckodriver		libebml			libtiff			nspr			python			wget
+# chromedriver		gettext			libffi			libunistring		nss			python3			xz
+# cocoapods		git			libgcrypt		libvorbis		openjpeg		python@2		zlib
+# coreutils		glib			libgpg-error		libxmlsec1		openssl			readline
+# cputhrottle		gmp			libidn			libyaml			openssl@1.1		sassc
+# diffutils		gnu-sed			libidn2			little-cms2		p11-kit			sqlite
 
 echo "installing apps with brew cask"
-brew cask install iterm2 alfred google-chrome firefox google-drive-file-stream visual-studio-code \
-1password slack harvest
+iterm | brew cask install iterm2 
+brew cask install google-chrome 
+brew cask install firefox
+brew cask install google-drive-file-stream
+code | brew cask install visual-studio-code
+brew cask install 1password
+brew cask install slack
+brew cask install harvest
+
+# required by solr/jmeter
+brew cask install java
 
 # node
 echo "installing node"

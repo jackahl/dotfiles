@@ -1,0 +1,5 @@
+.buildout/cache
+.buildout/eggs
+.buildout/extends
+.buildout/downloads
+
