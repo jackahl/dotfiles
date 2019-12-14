@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+# ~/.macos — https://mths.be/macos
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+###############################################################################
+# Timo                                                                        #
+###############################################################################
+
+echo "create .zshrc"
+touch .zshrc
+
+echo "installing homebrew"
+# install homebrew https://brew.sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+echo "brew installing stuff"
+# hub: a github-speciic version of git
+# python3: 
+brew install git hub python3
+
+echo "installing apps with brew cask"
+brew cask install iterm2 alfred google-chrome firefox google-drive-file-stream visual-studio-code \
+1password slack harvest
+
+# node
+echo "installing node"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm install --lts
+
+# installing yarn with bash because it tries to install node when using brew.
+curl -o- -L https://yarnpkg.com/install.sh | bash | true
+
+# echo "installing node (via n-install)"
+# curl -L https://git.io/n-install | bash
+
+# echo "node --version: $(node --version)"
+# echo "npm --version: $(npm --version)"
+
+echo "installing a few global npm packages"
+# npm install --global serve diff-so-fancy fkill-cli npm-quick-run semantic-release-cli
+
+# python stuff
+pip3 install virtualenv
+
+# .ssh dir permissions
+mkdir -p /Users/timo/.ssh
+chmod 700 /Users/timo/.ssh
+chmod 644 /Users/timo/.ssh/*.pub
+chmod 600 /Users/timo/.ssh/timostollenwerk
+chmod 600 /Users/timo/.ssh/github
