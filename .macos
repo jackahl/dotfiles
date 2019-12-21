@@ -36,6 +36,8 @@ brew install git hub python3
 brew install libpcre
 # libmagic: required by kitconcept.contentcreator (python_magic)
 brew install libmagic
+# libdev: required by locustio
+brew install libev
 
 # ansible			enchant			gnutls			libmagic		mercurial		packer			ssh-copy-id
 # aspell			findutils		goaccess		libmatroska		mkvtoolnix		pcre			thefuck
