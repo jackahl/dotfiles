@@ -31,7 +31,7 @@ brew | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew
 echo "brew installing stuff"
 # hub: a github-speciic version of git
 # python3: 
-brew install git hub python3 
+brew install git hub python3 pyenv-virtualenv
 # libpcre: required by Plone/Volto (pyscss dep)
 brew install libpcre
 # libmagic: required by kitconcept.contentcreator (python_magic)
