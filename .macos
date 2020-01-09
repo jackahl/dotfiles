@@ -38,7 +38,10 @@ brew install libpcre
 brew install libmagic
 # libdev: required by locustio
 brew install libev
+# sassc: required by node-sass -> Volto
+brew install sassc
 
+# T.
 # ansible			enchant			gnutls			libmagic		mercurial		packer			ssh-copy-id
 # aspell			findutils		goaccess		libmatroska		mkvtoolnix		pcre			thefuck
 # bash			flac			gobject-introspection	libogg			moreutils		pcre2			tokyo-cabinet
@@ -51,6 +54,16 @@ brew install libev
 # coreutils		glib			libgpg-error		libxmlsec1		openssl			readline
 # cputhrottle		gmp			libidn			libyaml			openssl@1.1		sassc
 # diffutils		gnu-sed			libidn2			little-cms2		p11-kit			sqlite
+
+# V.
+# ansible			cocoapods		freetype		gnutls			libgcrypt		libsass			mercurial		openjpeg		pkg-config		ssh-copy-id		zlib
+# aspell			coreutils		gdbm			goaccess		libgpg-error		libtasn1		mkvtoolnix		openssl			poppler			thefuck
+# bash			cputhrottle		geckodriver		gobject-introspection	libidn			libtiff			moreutils		openssl@1.1		python			tokyo-cabinet
+# bash-completion2	diffutils		gettext			icu4c			libidn2			libunistring		mysql@5.7		p11-kit			python3			watch
+# bash-completion@2	enchant			git			jpeg			libmagic		libvorbis		nettle			packer			python@2		watchman
+# boost			findutils		glib			libdvdcss		libmatroska		libxmlsec1		nmap			pcre			readline		webp
+# cairo			flac			gmp			libebml			libogg			libyaml			nspr			pcre2			sassc			wget
+# chromedriver		fontconfig		gnu-sed			libffi			libpng			little-cms2		nss			pixman			sqlite			xz
 
 echo "installing apps with brew cask"
 iterm | brew cask install iterm2 
