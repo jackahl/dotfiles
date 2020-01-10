@@ -107,3 +107,7 @@ chmod 700 /Users/timo/.ssh
 chmod 644 /Users/timo/.ssh/*.pub
 chmod 600 /Users/timo/.ssh/timostollenwerk
 chmod 600 /Users/timo/.ssh/github
+
+# Fix "fatal error: 'X11/Xlib.h' file not found" for old Pillow versions
+ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers/X11 /usr/local/include/X11
+
