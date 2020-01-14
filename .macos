@@ -22,7 +22,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo "cloning dotfiles"
 git clone git@github.com:tisto/dotfiles.git "${HOME}/workspace/dotfiles"
 ln -s "${HOME}/workspace/dotfiles/.zshrc" "${HOME}/.zshrc"
-ln -s "${HOME}/workspace/dotfiles/.buildout" "${HOME}/.buildout"
+# ln -s "${HOME}/workspace/dotfiles/.buildout" "${HOME}/.buildout"
 
 echo "installing homebrew"
 # install homebrew https://brew.sh
